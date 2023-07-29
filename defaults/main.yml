@@ -1,40 +1,40 @@
 ---
 all_users_list:
-  eid-01:
+  - eid-01:
     name: Eric Ames
-  eid-02:
+  - eid-02:
     name: Mike Gilbert
-  eid-03:
+  - eid-03:
     name: Chris Tjon
-  eid-04:
+  - eid-04:
     name: Carson Ames
-  eid-05:
+  - eid-05:
     name: Joe Johnston
-  eid-06:
+  - eid-06:
     name: Joe Smucketelly
-  eid-07:
+  - eid-07:
     name: Professor Benotz
-  eid-10:
+  - eid-10:
     name: Maria Shriver
 
 all_users_email_list:
-  eeid-08:
+  - eid-08:
     name: Kendall Ames
-  eeid-09: 
+  - eid-09: 
     name: Di Bidle
-  eid-01:
+  - eid-01:
     name: Eric Ames
-  eid-02:
+  - eid-02:
     name: Mike Gilbert
-  eid-03:
+  - eid-03:
     name: Chris Tjon
-  eid-04:
+  - eid-04:
     name: Carson Ames
-  eid-05:
+  - eid-05:
     name: Joe Johnston
-  eid-06:
+  - eid-06:
     name: Joe Smucketelly
-  eid-07:
+  - eid-07:
     name: Professor Benotz
 
 all_users_list_keys: "{{all_users_list.keys()|list }}"
