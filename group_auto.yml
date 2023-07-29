@@ -39,7 +39,6 @@
           after:  "{{ all_users_list.keys()|sort }}"
 
       - name: Show me the differences
-        changed_when: false
         ansible.utils.fact_diff:
           after: "{{ after }}"
           before: "{{ before }}"
