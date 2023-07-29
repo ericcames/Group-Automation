@@ -35,8 +35,8 @@
 
       - name: Set a fact for our dictionaries
         ansible.builtin.set_fact:
-          before: "{{ all_users_list.keys()|sort }}"
-          after:  "{{ all_users_email_list.keys()|sort }}"
+          before: "{{ all_users_email_list.keys()|sort }}"
+          after:  "{{ all_users_list.keys()|sort }}"
 
       - name: Show me the differences
         ansible.utils.fact_diff:
