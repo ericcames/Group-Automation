@@ -35,7 +35,7 @@
 
       - name: High light the differences between the dictionaries
         when: 
-          - diff_keys|length != 0
+          - diff_keys|length == 0
           - all_users_list[item] != all_users_email_list[item]
         loop: "{{ all_users_list.keys()|sort }}"
         ansible.builtin.set_fact:
