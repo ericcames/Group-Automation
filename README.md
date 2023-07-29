@@ -1,2 +1,2 @@
 # Group Automation
-![image](https://github.com/ericcames/Group-Automation/assets/99105520/fe28d23f-81eb-4a41-9761-b989e6f7cd54)
+![image](https://github.com/ericcames/Group-Automation/assets/99105520/e4c1e86e-e213-4a55-ba27-1be5c8c402e7)
