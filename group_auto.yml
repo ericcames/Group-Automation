@@ -28,6 +28,11 @@
         ansible.builtin.debug:
           msg: "The dictionaries are not identical"
 
+      - name: test the length of the symmetric difference
+        when: diff_keys|length != 0
+        ansible.builtin.debug:
+          msg: "The difference in the keys: {{ diff_keys }}"
+
       - name: High light the differences between the dictionaries
         when: 
           - diff_keys|length == 0
