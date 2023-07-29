@@ -35,7 +35,7 @@
 
       - name: Print shit out
         when: diff_keys|length == 0
-        loop: "{{ all_users_list['keys']()|sort }}"
+        loop: "{{ all_users_list.keys()|sort }}"
         ansible.builtin.debug:
           msg: "{{ item }} is {{ (all_users_list[item] == all_users_email_list[item])|ternary('OK', 'KO') }}"
 
