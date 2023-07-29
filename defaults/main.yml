@@ -41,4 +41,4 @@ all_users_list_keys: "{{all_users_list.keys()|list }}"
 
 all_users_email_list_keys: "{{all_users_email_list.keys()|list }}"
 
-diff_keys: "{{ all_users_list_keys | symmetric_difference(all_users_email_list_keys)}}"
+diff_keys: "{{ all_users_list_keys|symmetric_difference(all_users_email_list_keys)}}"
