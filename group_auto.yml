@@ -28,7 +28,14 @@
         ansible.builtin.debug:
           msg: "The dictionaries are not identical"
 
-      - name: Testing the length of the symetric difference
-        when: diff_keys|length != 0
+      - name: High light the differences between the dictionaries
+        when: 
+          - diff_keys|length == 0
+          - all_users_list[item] != all_user_email_list[item]
+        loop: "{{ all_users_list.keys()|sort }}"
+        ansible.builtin.set_fact:
+          diff_vals: "{{ diff_vals|d({})|combine({item: all_users_list[item]}) }}"
+
+      - name: Print out the differences
         ansible.builtin.debug:
-          msg: "The difference in the keys: {{ diff_keys }}"
+          var: diff_vals
