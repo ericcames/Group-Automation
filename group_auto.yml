@@ -38,7 +38,7 @@
           before: "{{ all_users_email_list.keys()|sort }}"
           after:  "{{ all_users_list.keys()|sort }}"
 
-      - name: Show me the differences
+      - name: Show me the differences, The green items get added to the email group.  The items in red are removed.
         ansible.utils.fact_diff:
           after: "{{ after }}"
           before: "{{ before }}"
