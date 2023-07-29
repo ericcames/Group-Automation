@@ -19,12 +19,12 @@
           msg: "Employee ID {{ item.key }} belongs to {{ item.value.name }}"
 
       - name: Compare the dictionaries for sameness
-        when: all_users_list ==  all_user_email_list
+        when: all_users_list ==  all_users_email_list
         ansible.builtin.debug:
           msg: "The dictionaries are identical"
 
       - name: Compare the dictionaries for difference
-        when: all_users_list !=  all_user_email_list
+        when: all_users_list !=  all_users_email_list
         ansible.builtin.debug:
           msg: "The dictionaries are not identical"
 
