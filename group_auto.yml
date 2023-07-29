@@ -40,5 +40,5 @@
 
       - name: Show me the differences
         ansible.utils.fact_diff:
-          add_these: "{{ before }}"
-          subtract_these: "{{ after }}"
+          before: "{{ before }}"
+          after: "{{ after }}"
