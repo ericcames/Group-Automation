@@ -1,8 +1,10 @@
 ---
   - name: Print out Group dictionaries
     hosts: localhost
+    gather_facts: false
     vars_files:
       - defaults/main.yml
+
 
     tasks:
 
@@ -15,3 +17,18 @@
         loop: "{{ lookup('ansible.builtin.dict', all_user_email_list) }}"
         ansible.builtin.debug:
           msg: "Employee ID {{ item.key }} belongs to {{ item.value.name }}"
+
+      - name: Compare the dictionaries for sameness
+        when: all_users_list ==  all_user_email_list
+        ansible.builtin.debug:
+          msg: "The dictionaries are identical"
+
+      - name: Compare the dictionaries for difference
+        when: all_users_list !=  all_user_email_list
+        ansible.builtin.debug:
+          msg: "The dictionaries are not identical"
+
+      - name: Testing the length of the symetric difference
+        when: diff_keys|length != 0
+        ansible.builtin.debug:
+          msg: "The difference in the keys: {{ diff_keys }}"
