@@ -33,14 +33,20 @@
         ansible.builtin.debug:
           msg: "The difference in the keys: {{ diff_keys }}"
 
-      - name: High light the differences between the dictionaries
-        when: 
-          - diff_keys|length == 0
-          - all_users_list[item] != all_users_email_list[item]
-        loop: "{{ all_users_list.keys()|sort }}"
-        ansible.builtin.set_fact:
-          diff_vals: "{{ diff_vals|d({})|combine({item: all_users_list[item]}) }}"
-
-      - name: Print out the differences
+      - name: Print shit out
+        when: diff_keys|length == 0
+        loop: "{{ all_users_list['keys']()|sort }}"
         ansible.builtin.debug:
-          var: diff_vals
+          msg: "{{ item }} is {{ (all_users_list[item] == all_users_email_list[item])|ternary('OK', 'KO') }}"
+
+      # - name: High light the differences between the dictionaries
+      #   when: 
+      #     - diff_keys|length == 0
+      #     - all_users_list[item] != all_users_email_list[item]
+      #   loop: "{{ all_users_list.keys()|sort }}"
+      #   ansible.builtin.set_fact:
+      #     diff_vals: "{{ diff_vals|d({})|combine({item: all_users_list[item]}) }}"
+
+      # - name: Print out the differences
+      #   ansible.builtin.debug:
+      #     var: diff_vals
