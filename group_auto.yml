@@ -39,7 +39,7 @@
           after:  "{{ all_users_email_list.keys()|sort }}"
 
       - name: Show me the differences
-        ansible.utils.fact.diff:
+        ansible.utils.fact_diff:
           before: "{{ before }}"
           after: "{{ after }}"
 
