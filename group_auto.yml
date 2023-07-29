@@ -13,8 +13,8 @@
         ansible.builtin.debug:
           msg: "Employee ID {{ item.key }} belongs to {{ item.value.name }}"
 
-      - name: Print out all_user_email_list dictionary 
-        loop: "{{ lookup('ansible.builtin.dict', all_user_email_list) }}"
+      - name: Print out all_users_email_list dictionary 
+        loop: "{{ lookup('ansible.builtin.dict', all_users_email_list) }}"
         ansible.builtin.debug:
           msg: "Employee ID {{ item.key }} belongs to {{ item.value.name }}"
 

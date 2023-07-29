@@ -17,7 +17,7 @@ all_users_list:
   eid-10:
     name: Maria Shriver
 
-all_user_email_list:
+all_users_email_list:
   eeid-08:
     name: Kendall Ames
   eeid-09: 
