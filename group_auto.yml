@@ -1,0 +1,12 @@
+---
+  - name: Print out Group dictionaries
+    hosts: localhost
+    vars_files:
+      - defaults/main.yml
+
+    tasks:
+
+      - name: Print out first dictionary
+        loop: "{{ lookup('ansible.builtin.dict', all_users_list) }}"
+        ansible.builtin.debug:
+          msg: "Employee ID {{ item.key }} belongs to {{ item.value.name }}"
