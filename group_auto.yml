@@ -26,7 +26,7 @@
       - name: Compare the dictionaries for difference
         when: all_users_list !=  all_users_email_list
         ansible.builtin.debug:
-          msg: "The dictionaries are not identical"
+          msg: "The dictionaries are different"
 
       - name: test the length of the symmetric difference
         when: diff_keys|length != 0
