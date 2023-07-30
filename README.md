@@ -8,7 +8,7 @@
 <html>
 <h4>Notes</h4>
 <ul>
-  <li>The inventory for the playbook will be the mail exchange servers where group changes are made.</li>
+  <li>The inventory for the playbook will be the list of mail exchange servers where group changes are made.</li>
   <li>You will need the commands to do adds and subtracts from the target email group.</li>
   <li>You can talk to your upstream systems with the ansible.builtin.uri module or the community.mysql.mysql_query module</li>
   <li>Incremental updates to the target email group are less work for the mail exchange servers.</li>
