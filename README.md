@@ -8,5 +8,5 @@
 ### Notes
 + The inventory for the playbook will be the list of mail exchange servers where group changes are made.
 + You will need the commands to do adds and subtracts from the target email group.
-+ You can talk to your upstream systems with the [uri module](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/uri_module.html) or the community.mysql.mysql_query module.
++ You can talk to your upstream systems with the [uri module](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/uri_module.html) or the [mysql_query module](https://docs.ansible.com/ansible/latest/collections/community/mysql/mysql_query_module.html).
 + Incremental updates to the target email group are less work for the mail exchange servers.
