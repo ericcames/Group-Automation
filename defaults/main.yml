@@ -20,7 +20,7 @@ all_users_list:
 all_users_email_list:
   eid-08:
     name: Kendall Ames
-  eid-09: 
+  eid-09:
     name: Di Bidle
   eid-01:
     name: Eric Ames

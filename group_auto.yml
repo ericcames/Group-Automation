@@ -1,44 +1,42 @@
 ---
-  - name: Print out Group dictionaries
-    hosts: localhost
-    gather_facts: false
-    vars_files:
-      - defaults/main.yml
+- name: Print out Group dictionaries
+  hosts: localhost
+  gather_facts: false
+  vars_files:
+    - defaults/main.yml
 
+  tasks:
+    - name: Print out all_users_list dictionary
+      loop: "{{ lookup('ansible.builtin.dict', all_users_list) }}"
+      ansible.builtin.debug:
+        msg: Employee ID {{ item.key }} belongs to {{ item.value.name }}
 
-    tasks:
+    - name: Print out all_users_email_list dictionary
+      loop: "{{ lookup('ansible.builtin.dict', all_users_email_list) }}"
+      ansible.builtin.debug:
+        msg: Employee ID {{ item.key }} belongs to {{ item.value.name }}
 
-      - name: Print out all_users_list dictionary 
-        loop: "{{ lookup('ansible.builtin.dict', all_users_list) }}"
-        ansible.builtin.debug:
-          msg: "Employee ID {{ item.key }} belongs to {{ item.value.name }}"
+    - name: Compare the dictionaries for sameness
+      when: all_users_list ==  all_users_email_list
+      ansible.builtin.debug:
+        msg: The dictionaries are identical
 
-      - name: Print out all_users_email_list dictionary 
-        loop: "{{ lookup('ansible.builtin.dict', all_users_email_list) }}"
-        ansible.builtin.debug:
-          msg: "Employee ID {{ item.key }} belongs to {{ item.value.name }}"
+    - name: Compare the dictionaries for difference
+      when: all_users_list !=  all_users_email_list
+      ansible.builtin.debug:
+        msg: The dictionaries are different
 
-      - name: Compare the dictionaries for sameness
-        when: all_users_list ==  all_users_email_list
-        ansible.builtin.debug:
-          msg: "The dictionaries are identical"
+    - name: test the length of the symmetric difference
+      when: diff_keys|length != 0
+      ansible.builtin.debug:
+        msg: "The difference in the keys: {{ diff_keys }}"
 
-      - name: Compare the dictionaries for difference
-        when: all_users_list !=  all_users_email_list
-        ansible.builtin.debug:
-          msg: "The dictionaries are different"
+    - name: Set a fact for our dictionaries
+      ansible.builtin.set_fact:
+        before: "{{ all_users_email_list.keys()|sort }}"
+        after: "{{ all_users_list.keys()|sort }}"
 
-      - name: test the length of the symmetric difference
-        when: diff_keys|length != 0
-        ansible.builtin.debug:
-          msg: "The difference in the keys: {{ diff_keys }}"
-
-      - name: Set a fact for our dictionaries
-        ansible.builtin.set_fact:
-          before: "{{ all_users_email_list.keys()|sort }}"
-          after:  "{{ all_users_list.keys()|sort }}"
-
-      - name: Show me the differences, The green items get added to the email group.  The items in red are removed.
-        ansible.utils.fact_diff:
-          after: "{{ after }}"
-          before: "{{ before }}"
+    - name: Show me the differences, The green items get added to the email group.  The items in red are removed.
+      ansible.utils.fact_diff:
+        after: "{{ after }}"
+        before: "{{ before }}"
